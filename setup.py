@@ -7,4 +7,4 @@ setup(
         entry_points={
             "pytimed": [
                 "hello=hello:say_hello",
-            ], }, )
+            ], }, requires=['numpy', 'scipy', 'matplotlib'])
