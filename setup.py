@@ -8,4 +8,4 @@ setup(
             "pytimed": [
                 "hello=hello:say_hello",
             ], }, requires=['numpy', 'scipy', 'matplotlib', 'pandas', 'sklearn', 'statsmodels',
-                            'keras'])
+                            'keras', 'gensim'])
