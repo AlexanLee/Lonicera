@@ -9,6 +9,9 @@ class LR(object):
     def fn(w, x):
         """决策函数为sigmoid函数
         """
+        print("predict w:", w, "x:", x)
+        print("w*x:", -w.dot(x))
+        print(1.0 / (1.0 + np.exp(-w.dot(x))))
         return 1.0 / (1.0 + np.exp(-w.dot(x)))
 
     @staticmethod
@@ -41,6 +44,7 @@ class FTRL(object):
 
     def update(self, x, y):
         print 'update========================================'
+        print 'x:', x, "y:", y
         print 'self.z:', self.z, ' self.l1:', self.l1, ' self.l2:', self.l2, ' self.alpha:', self.alpha, ' self.bata:', self.beta
         self.w = np.array([0 if np.abs(self.z[i]) <= self.l1 else (np.sign(
                 self.z[i]) * self.l1 - self.z[i]) / (self.l2 + (
@@ -95,7 +99,7 @@ if __name__ == '__main__':
     corpus = Corpus("train.txt", d)
     test = Corpus("test.txt", d)
     ftrl = FTRL(dim=d, l1=1.0, l2=1.0, alpha=0.1, beta=1.0)
-    ftrl.train(corpus, verbos=False, max_itr=10, eta=0.01, epochs=100)
+    ftrl.train(corpus, verbos=True, max_itr=20, eta=0.01, epochs=3)
     w = ftrl.w
     print w
 
